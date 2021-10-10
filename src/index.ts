@@ -11,7 +11,8 @@ const port = process.env.PORT || 3000;
 
 const server: Server = createServer(app);
 
-server.listen(port);
 server.on('listening', () => {
   console.log(`Listening on port: ${port}`.blue.underline.bold);
 });
+
+server.listen(port);

@@ -1,11 +1,13 @@
 import express from 'express';
 
+import dummiesRouter from './modules/dummy/routes';
 
 class Server {
   public app: express.Application;
 
   constructor() {
     this.app = express();
+    this.configMiddleware();
     this.mountRoutes();
   }
 
@@ -15,6 +17,9 @@ class Server {
   }
 
   private mountRoutes() {
+
+    this.app.use('/dummies', dummiesRouter);
+
     this.app.get('/', (req, res, next) => {
       res.status(200).json({ message: 'hello, world!' });
     });
